@@ -1,0 +1,60 @@
+!!!5
+%html{class:"no-js", lang:"es"}
+	%header
+		%meta{charset:"utf-8"}
+		%meta{name:"description", content:"Esta es la pagina de prueba con presocesadores"}
+		%meta{name:"viewport", content:"width=device-width, initial-scale=1"}
+		
+		%link{href:'https://fonts.googleapis.com/css?family=Dancing+Script',rel:'stylesheet'}
+		%link{:rel => "stylesheet", :href => "css/normalize.css"}/
+		%link{:rel => "stylesheet", :href => "css/bootstrap.css"}/
+		%link{:rel => "stylesheet", :href => "css/flexboxgrid.min.css"}/
+		%link{:rel => "stylesheet", :href => "css/style.css"}/
+		
+		%sctipt{src:"js/vendor/modernizr-2.8.3.min.js"}
+	%body
+		="<!--[if lt IE 9]>"
+		%p{class:"browserupgrade"}
+			Estas usando un navegador
+			%strong desactualizado.
+			por favor
+			%a{:href => "http://browsehappy.com/"}
+				actualiza tu navegador para una mejor experiencia
+		="<![endif]-->"
+		.video-container
+			%video{autoplay:true, loop:true, width:"1280", height:"720", poster:"videos/snapshots/browsing.jpg"}
+				%source{src:"videos/mp4/browsing.mp4", typ:"video/mp4"}
+				%source{src:"videos/webm/browsing.webm", typ:"video/webm"}
+		.row.full-height.middle-xs.center-xs.relative.up
+			.col-xs-12
+				.box.textoblanco
+					%img{:src => "img/ubuntu.png", :alt => "Logo", :width => "300"}/
+					%h1.dancing-script.titulo.no-margin Demostracion de página
+					%p#is-open
+					%i.glyphicon.glyphicon-time
+						Abierto ahora
+			%nav.fixed.top.right.navigation.textoblanco#navigation
+				-menu = ["Inicio", "Menú", "Galería", "Contacto", "Como llegar"]
+				%ul.list-inline
+					-menu.each do |item|
+						%li
+							%a{:href => ""}= item
+
+			.absolute.fondo-negro.padding-largo.bottom.texto-blanco.todo-ancho#descripcion
+				.row.middle-xs.center-xs
+					.col-xs-7.col-sm-6.textoblanco.mediano
+						Este es el texto de descripción de la web
+					.col-xs.hidden
+						.box
+							%nav.text-right.navigation
+								%ul.list-inline
+									-menu.each do |item|
+										%li
+											%a{:href => ""}= item
+
+		.full-height
+		%script{src:"http://code.jquery.com/jquery-3.1.1.min.js", integrity:"sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=", crossorigin:"anonymous"}
+		-# Si es que jQuery no esta en el otro servidor
+		%script
+			window.jQuery || document.write("<script src='js/vendor/jquery-3.1.1.min.js'><\/script>")
+		%script{src:"js/main.js"}
